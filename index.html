@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            width: 100vw;
+            /* overflow: hidden; */
+        }
+        body, img{
+            margin: 0 ;
+            padding: 0;
+            position: relative;
+        }
+        header{
+            position: absolute;
+            line-height: 40px;
+            right: calc((100vw - 1080px) / 2);
+            color: #fff;
+            z-index: 999;
+        }
+        nav{
+            display: flex;
+        }
+        h3{
+            margin-left: 10px;
+            cursor: pointer;
+            
+        }
+        img{
+            width: 100%;
+        }
+        @media (min-width: 0px)  and (max-width: 1024px){
+            header{
+                right:10%;
+                top: 40px;
+            }
+            h3{
+                font-size: 12px;
+            }
+        }
+
+        
+    </style>
+</head>
+<body>
+    <header>
+        <div class="tam"></div>
+        <nav>
+            <h3>Supereme</h3>
+            <h3>Products</h3>
+            <h3>Events</h3>
+            <h3>Gallery</h3>
+        </nav>
+    </header>
+    <img src="./images/supreme_portfolio_Pc_main.jpg" alt="메인">
+    <script>
+        imgName= ['supreme_portfolio_Pc_main.jpg','supreme_portfolio_Pc_sub01.jpg','supreme_portfolio_Pc_sub02.jpg','supreme_portfolio_Pc_sub03.jpg'];
+        imgNameTab= ['supreme_portfolio_Tb_main.jpg','supreme_portfolio_Tb_sub01.jpg','supreme_portfolio_Tb_sub02.jpg','supreme_portfolio_Tb_sub03.jpg'];
+        imgNameMob= ['supreme_portfolio_Mb_main.jpg','supreme_portfolio_Mb_sub01.jpg','supreme_portfolio_Mb_sub02.jpg','supreme_portfolio_Mb_sub03.jpg'];
+
+        const nav = document.querySelectorAll('h3');
+        let wd = document.querySelector('body').clientWidth;
+        console.log(wd);
+
+        // nav.forEach((e,ind)=>{
+        //     e.onclick=function(){
+        //           document.querySelector('img').attributes[0].nodeValue=`./images/${imgName[ind]}`; 
+        //     }
+        // });
+
+        if(wd > 1024 ){
+            document.querySelector('img').attributes[0].nodeValue=`./images/${imgName[0]}`; 
+            
+            nav.forEach((e,ind)=>{
+                e.onclick=function(){
+                    document.querySelector('img').attributes[0].nodeValue=`./images/${imgName[ind]}`; 
+                }
+            });
+            
+        }else if(wd > 420 && wd <= 1024){
+           
+            document.querySelector('img').attributes[0].nodeValue=`./images/${imgNameTab[0]}`; 
+        nav.forEach((e,ind)=>{
+            e.onclick=function(){
+                  document.querySelector('img').attributes[0].nodeValue=`./images/${imgNameTab[ind]}`; 
+            }
+        });
+        
+    }else if(wd <= 420){
+        document.querySelector('img').attributes[0].nodeValue=`./images/${imgNameMob[0]}`; 
+
+        nav.forEach((e,ind)=>{
+            e.onclick=function(){
+                  document.querySelector('img').attributes[0].nodeValue=`./images/${imgNameMob[ind]}`; 
+            }
+        });
+        
+        }
+
+    </script>
+</body>
+</html>
